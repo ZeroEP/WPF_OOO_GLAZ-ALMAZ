@@ -28,16 +28,21 @@ namespace WPF_OOO_GLAZ_ALMAZ
 
         private void Auth_click(object sender, RoutedEventArgs e)
         {
-            User user = EfModel.Init().Users.FirstOrDefault(x => x.UserLogin == login_tb.Text && x.UserPassword == password_tb.Password);
-            if (user != null)
+            if (login_tb.Text != "" && password_tb.Password != "")
             {
-                MessageBox.Show("Приветствую " + user.UserLogin + "");
-                SypplyWindow window = new SypplyWindow();
-                this.Close();
-                window.Show();
+                User user = EfModel.Init().Users.FirstOrDefault(x => x.UserLogin == login_tb.Text && x.UserPassword == password_tb.Password);
+                if (user != null)
+                {
+                    MessageBox.Show("Приветствую " + user.UserLogin + "");
+                    SypplyWindow window = new SypplyWindow();
+                    this.Close();
+                    window.Show();
+                }
+                else
+                    MessageBox.Show("Неправильный логин или пароль");
             }
             else
-                MessageBox.Show("Неправильный логин или пароль");
+                MessageBox.Show("Введите значение");
         }
     }
 }
