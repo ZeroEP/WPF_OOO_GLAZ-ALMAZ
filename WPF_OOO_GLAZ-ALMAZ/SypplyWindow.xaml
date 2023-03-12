@@ -8,6 +8,41 @@
         Title="SypplyWindow" Height="450" Width="800"
         Background="#FF9BD1E5">
     <Grid >
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+
+            <TextBlock Grid.Column="0" Text="Поиск" FontSize="20" Margin="15"/>
+         <TextBox Grid.Column="0"  Margin="15" TextChanged="TextBox_TextChanged" Name="tbsearch"/>
+            <TextBlock Grid.Column="0" Text="Поиск" FontSize="20" Margin="15"/>
+        </StackPanel>
+        <ListView Name="lvSupply" Grid.Column="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Image Margin="10" Grid.Row="0" Source="{Binding Suppliescol, TargetNullValue={StaticResource Picture}}" HorizontalAlignment="Center"/>
+                        <Grid Grid.Row="1">
+                            <StackPanel Grid.Row="1">
+                                <TextBlock Margin="15" Text="{Binding SupplyName }"></TextBlock>
+                                <TextBlock Margin="15" Text="{Binding SupplyDescription }"></TextBlock>
+                                <Button Grid.Row="2" Content="Удалить" Grid.Column="0"></Button>
+                                <Button Grid.Row="2" Content="Редактировать" Grid.Column="1"></Button>
+                            </StackPanel>
+                        </Grid>
+                        </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Window>
