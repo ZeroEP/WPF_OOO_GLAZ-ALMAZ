@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WPF_OOO_GLAZ_ALMAZ.Entitys;
 
 namespace WPF_OOO_GLAZ_ALMAZ
 {
@@ -22,6 +23,12 @@ namespace WPF_OOO_GLAZ_ALMAZ
         public SypplyWindow()
         {
             InitializeComponent();
+            lvSupply.ItemsSource= EfModel.Init().Supplies.ToList();
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            lvSupply.ItemsSource = EfModel.Init().Supplies.ToList().Where(x=>x.SupplyName== tbsearch.Text);
         }
     }
 }
